@@ -173,4 +173,22 @@ OPTIONS * HTTP/1.1
 Nhưng máy khác sẽ có thể để sử dụng URL hiệu quả ( từ getUri())), để xác định giao thức, tên máy chủ và cổng TCP. 
 
 Một máy khach HTTP phải bỏ qua giá trị của Uri::getPath() và Uri::getQuery(). và thay vào đó  sử dụng giá trị được trả về bởi getRequestTarget() cái mà mặc định được nối với hai giá trị này.
-.... tobe continute....
+
+
+Máy khách cái mà chọn không khai triển 1 hoặc nhiều hơn 4 định dạng request đích, vẫn  `phải` sử dụng `getRequestTarget()`. Những máy khách phải `từ bỏ` những yêu cầu đích chúng không hỗ trợ và phải không được dựa vào các giá trị từ `getUri()`.  
+`RequestInterface` cung cấp các phương thức cho truy xuất những yêu cầu đích hoặc tạo một thực  thể mới với yêu cầu đích được cung cấp. Theo mặc định, nếu không có yêu cầu đich được tạo ra rõ ràng trong thực thể,`getRequestTarget()` sẽ trả về mẫu `gốc` của URI được tạo ( hoặc "/? nếu URIs không được tạo). `withRequestTarget($requestTarget) tạo ra 1 thực thể mới với yêu cầu đích được chỉ định, và bởi vậy cho phép các nhà phát triển để tạo ra các yêu cầu tin nhắn cái mà đại diện cho 3 mẫu request-target ( absolute-form, authority-form và asterisk-form). Khi được sử dụng, thưc thể URI được tạo có thể vẫn được sử dụng, đặc biệt trong máy khách, nơi nó có thể được sử dụng để tạo kết nối với máy chủ
+
+
+### 1.5 Các yêu cầu phía máy chủ 
+
+`RequestInterface` cung cấp các đại diện chung của 1 tin nhắn yêu càu HTTP. Tuy nhiên, các yêu cầu phía máy chủ cần các xử lý bổ sung, do môi trường tự nhiên của phía máy chủ. Tiến trình xử lý phía máy chủ cần lấy tính đến Cổng giao diện chung, và cụ thể hơn, các lớp trừu tượng của PHP và mở rộng của CGI thông qua APIs máy chủ của nó (SAPI). PHP cung cấp các đơn giản hóa xoay quanh việc sắp  xếp đầu vào thông qua các biến toàn cục như: 
+
+- $_COOKIE, cái mà khử tuần tự hóa và cung cấp các truy cập đơn giản tới cookies HTTP 
+- $_GET, cái mà khử tuần tự hóa và cung cấp các truy cập đơn giản tới các đối số chuỗi truy vấn 
+- $_POST, khử tuần tự hóa và cung cấp các truy cập đơn giản cho các tham số đã được mã hóa url được gửi qua HTTP `POST`; nói chung, nó có thể được xem như kết quả của việc phân tích nội dung của tin nhắn 
+- $_FILES, Cái mà cung cấp các siêu dữ liệu tuần tự hóa thông qua cập nhập files. 
+- $_SERVER,cái mà cung cấp truy cập tới CGI\SAPI biến môi trường, cái mà thường chứa những phương thức yêu cầu, lược đồ yêu cầu, URI request và các tiêu đề. 
+
+ServerRequestInterface mở rộng từ RequestInterface để cung cấp các trừu tượng xung quanh những biến siêu toàn cục. Thực hành này làm giảm việc nhân đôi các biến siêu toàn cục bởi người dùng, và khuyến khích và thúc đẩy khả năng kiểm tra các yêu cầu của người tiêu dùng. 
+
+Các yêu cầu máy chủ cung cấp các thuộc tính bổ sung, `attributes ` cho phép người tiêu dùng khả năng để quan sát, phân tích, và nối các yêu cầu với các quy tắc dành riêng cho ứng dụng ( chẳng hạn như các khớp đường dẫn, khớp lược đồ, khớp máy chủ...) . Như vậy, các yêu cầu máy chủ cũng có thể cung cấp các tin nhắn giữa nhiều yêu cầu người tiêu dùng. 
