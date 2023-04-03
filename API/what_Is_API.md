@@ -88,39 +88,49 @@ Chúng kết hợp hai hoặc nhiều API khác nhau để giải quyết các h
 
 2. Performance
    Các điểm cuối API, đặc biệt là những điểm có lưu lượng truy cập cao, có thể gây ra tắc nghẽn và ảnh hưởng đến hiệu suất hệ thống.
-How to secure a REST API?
-All APIs must be secured through proper authentication and monitoring. The two main ways to secure REST APIs include:
+### Cách để bảo mật 1 REST API?
 
-1. Authentication tokens
-   These are used to authorize users to make the API call. Authentication tokens check that the users are who they claim to be and that they have access rights for that particular API call. For example, when you log in to your email server, your email client uses authentication tokens for secure access.
+Tất cả các APIs phải được bảo mật thông qua ủy quyền và giám sát chính xác. Có hai cách chính để bảo mật REST APIs bao gồm : 
 
-2. API keys
-   API keys verify the program or application making the API call. They identify the application and ensure it has the access rights required to make the particular API call. API keys are not as secure as tokens but they allow API monitoring in order to gather data on usage. You may have noticed a long string of characters and numbers in your browser URL when you visit different websites. This string is an API key the website uses to make internal API calls.
+1. Mã xác thực 
 
-How to create an API?
-Due diligence and effort are required to build an API that other developers will want to work with and trust. These are the five steps required for high-quality API design:
+ Những mã này được sử dụng để xác thực người dùng để gọi API. Mã xác  thực kiểm tra xem người dùng là ai, họ có là người tuyên bố và có quyền truy cập cho các API cụ thể. Ví dụ, khi bạn ghi log vào email máy chủ của bạn, email của máy khach của bạn sử dụng mã xác thực cho truy cập bảo mật.
 
-1. Plan the API
-   API specifications, like OpenAPI, provide the blueprint for your API design. It is better to think about different use cases in advance and ensure the API adheres to current API development standards.
+2. Khóa APIs
 
-2. Build the API
-   API designers prototype APIs using boilerplate code. Once the prototype is tested, developers can customize it to internal specifications.
+Khóa APis xác nhận chương trình hay ứng dụng đang gọi các API. Chúng định danh ứng dụng và đảm bảo rằng nó có quyền truy cập đúng để thực hiện các cuộc gọi API cụ thể. Khóa API không an toàn như mã xác thực nhưng chúng cho phép APIs giám sát để thu thập dữ liệu sử dụng. Bạn có thể nhận ra có 1 chuỗi dài các ký tự và các số trong URl trình duyệt của bạn khi bạn vào các trang web khác. Chuỗi này là 1 khóa API website sử dụng để thực hiện các cuộc gọi API bên trong. 
 
-3. Test the API  
-   API testing is the same as software testing and must be done to prevent bugs and defects. API testing tools can be used to strength test the API against cyber attacks.
+### Cách để tạp 1 API? 
 
-4. Document the API  
-   While APIs are self-explanatory, API documentation acts as a guide to improve usability. Well-documented APIs that offer a range of functions and use cases tend to be more popular in a service-oriented architecture.
+Do sự siêng năng và nỗ lực được yêu cầu để xây dựng 1 API cái mà các nhà phát triển khác sẽ muốn làm và tin tưởng. Những điều này là 5 bước yêu cầu để có thiết kế API chất lượng cao:
 
-5. Market the API
-   Just as Amazon is an online marketplace for retail, API marketplaces exist for developers to buy and sell other APIs. Listing your API can allow you to monetize it.
+1. Kế hoạch cho API
 
-What is API testing?
-API testing strategies are similar to other software testing methodologies. The main focus is on validating server responses. API testing includes:
+Các đặc tính API, như OpenAI, cung cấp bản vẽ thiết kế cho các thiết kế API của bạn. Nó tốt hơn là nghĩ về các trường hợp sử dụng khác biệt và đảm bảo các API tuân thủ tiêu chuẩn phát triển API hiện tại.
 
-Making multiple requests to API endpoints for performance testing.
-Writing unit tests for checking business logic and functional correctness.
-Security testing by simulating system attacks.
+2. Xây dụng API
+
+Các nhà thiết kế APIs, các nguyên mẫu APIs đang sử dụng các mã bản mẫu. Một khi nguyên mẫu được kiểm tra, các nhà phát triển có thể tùy chỉnh nó với các đặc tính bên trong. 
+
+3. Test API  
+
+  Kiểm tra API là giống như kiểm tra các phần mềm khác và phải được hoàn thành để ngăn lỗi và các cuộc tấn công. Công cụ kiểm tra API có thể được sử dụng để kiểm tra mạnh hơn để chống laị các cuộc tấn công không gian mạng.
+
+4. Tài liệu API. 
+
+Trong khi APIs là tự định nghĩa, tài liệu API hoạt động như 1 hướng dẫn để cải thiện khả năng sử dụng. Tài liệu API tốt cái mà đưa ra 1 vùng các chức năng và các trường hợp sử dụng  có khuynh hướng phổ biến hơn trong 1 mô hình hướng dịch vụ 
+
+5. Siêu thị API
+
+ Giống như Amazon là 1 siêu thị online cho bán lẻ, các siêu thị API tồn tại cho các nhà phát triển mua và bán các APIs khác. Lắng nghe các APi của bạn cho phép bạn kiếm tiền 
+
+### test API là gì?
+
+Chiến lược kiểm tra API là tương tự như phương pháp luận kiểm tra các phần mềm khác. Mục tiêu chính là xác thực các phản hồi của máy chủ. Kiểm tra API bao gồm: 
+
+- Tạo ra nhiều yêu cầu tới đầu cuối API cho kiểm tra hiệu năng. 
+- Viết các đơn vị kiểm tra để kiểm tra logic hoạt động và tính chính xác của các chức năng.
+- Kiểm tra bảo mạt bằng cách mô phỏng tấn công hệ thống. 
 How to write API documentation?
 Writing comprehensive API documentation is part of the API management process. API documentation can be auto-generated using tools or written manually. Some best practices include:
 
