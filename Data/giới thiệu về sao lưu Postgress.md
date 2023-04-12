@@ -1,4 +1,5 @@
- 
+### Bài dịch từ [Crunchy Bridge](https://www.crunchydata.com/blog/introduction-to-postgres-backups)
+
 Sao lưu trong thế giới CSDL là điều thiết yếu. Chúng là các lưới an toàn bảo vệ bạn từ những bit nhỏ nhất của dữ liệu hao hụt. Có nhiều cách để sao lưu dữ liệu của bạn và bài viết này mục đích để giải thích các công cụ cơ bản liên quan đến sao lưu và các tùy chọn cho bạn, từ khi mới bắt đầu cho đến các hệ thống sản xuất phức tạp hơn. 
 
 ## pg_dump/pg_restore

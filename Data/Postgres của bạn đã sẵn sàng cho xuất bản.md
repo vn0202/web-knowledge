@@ -1,4 +1,5 @@
 # Postgres của bạn đã sẵn sàng cho xuất bản chưa?
+### Bài dịch từ [Crunchy Bridge](https://www.crunchydata.com/blog/is-your-postgres-ready-for-production)
 
 Bạn đang xây dựng ứng dụng của bạn trong nhiều tháng, bạn đã kiểm tra với bản thử nghiệm người dùng,
 bạn có các phản hồi và lặp đi lặp lại. Bạn đã xem qua danh sách khởi chạy của bạn,
