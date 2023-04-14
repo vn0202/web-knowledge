@@ -1,3 +1,4 @@
+  # From [https://dev.to/titovmx/system-design-behind-a-messenger-app-2268](https://dev.to/titovmx/system-design-behind-a-messenger-app-2268)
 # Thiết kế hệ thống đằng sau 1 ứng dụng tin nhắn
 
 Chúng ta hằng ngày sử dụng các ứng dụng tin nhắn như WhatApp và Telegram để trò chuyện với bạn của chúng ta. Tất cả chúng có 1 vài giải pháp thiết kế đằng sau ngữ cảnh cái mà ảnh hưởng trực tiếp tới trải nghiệm người dùng. Tôi đang mô tả một vài đặc tính có thể thấy từ khía cạnh người dùng  và giải thích công nghệ chi tiết cơ bản. Tuy nhiên, nó không phải là 1 hệ thống hoàn chỉnh và có nhiều chủ đề nơi mà chúng ta có thể đào sâu hơn. 
