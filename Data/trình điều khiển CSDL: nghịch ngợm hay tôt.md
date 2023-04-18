@@ -1,3 +1,4 @@
+## from [https://www.prequel.co/blog/database-drivers-naughty-or-nice](https://www.prequel.co/blog/database-drivers-naughty-or-nice)
 # Trinh điều khiển CSDL: Ngỗ nghịch hay tốt?
 
  Một danh sách các lỗi hàng đầu trinh điều khiển và hành vi sai trái chúng ta đã phát hiện trong những năm gần đây
@@ -26,4 +27,18 @@ Giao diện ODBC được thiết kế cho việc sử dụng với ngôn ngữ 
 
 Một vài trình điều khiển ghi các chứng chỉ nếu ở đó là 1 lỗi trong 1 chuỗi chứa 1 chứng chỉ như 1 khóa API hoặc 1 khóa bí mật AWS. Những thứ khác, những công dân trung thực hơn sẽ thay thế các trường chứng chỉ được biết với 1 chuỗi "dữ liệu đã xóa " khi đang đăng nhập vào thiết bị xuất hoặc ...
 
+# Một vài trình điều khiển xóa lỗi phím và chỉ trả về 1 tập kết quả trống thay thế.
 
+ Chúng ta đã học điều này 1 cách khó khăn khi đang cố để vận chuyển 1 tích hợp mới. Các mã của chúng ta trông có vẻ đúng, và làm việc với các tệp dữ liệu nhỏ. NHưng khi chúng ta cố gắng chạy nó trên các tập dữ liệu lớn hơn, nó sẽ cư xử như không có dữ lieuj trong bảng CSDL và trả về 1 tệp rỗng 
+
+Chúng tôi đã phát hiện ra rằng vài trình điều khiển có hết hạn thời gian truy vấn ẩn. Và đó, có lúc, khi các hết hạn thời gian đó xảy ra, các trình điều khiển không sinh ra hoặc trả về bất kỳ 1 loại ngoại lệ hay lỗi nào. Thay vào đó, chúng đơn giản là trả về 1 tệp rỗng.
+
+# Môt vài trình điều khiển không đồng ý với cách các kỷ nguyên nên được địa diện 
+
+Nó không là bí mật cái mà mẫu thời gian, múi giờ và các đối tượng hỗn hợp thường gây ra hiểu lầm cho các nhà phát triển [ bằng chứng A](). Cái mà có lẽ ít được biết đến hơn là ngy cả epochs (đai diện giây Unix của timestamp), mặc dù các lời thỉnh cầu của chúng như là đại điện không múi giờ, có thể khó để làm việc với nó. 
+
+Hóa ra, các CSDL thường không đồng sy cái mà chính xác là 1 epoch nên như nào. Một vài tuân theo định nghĩa nghiêm ngặt, việc cư xử chúng rõ ràng là 1 số giây ĐÃ trôi qua kể từ giữa đêm Giờ UTC ngày 1 tháng 1 năm 1970. Trong các trường hợp này, chúng được lưu và đại diện như int32. Số khác tuy chọn bao gồm tính chính  mili giây hay nano giây, Đây là những đại diện dạng int64 hay như các loại khác của số thực,  với số nguyên là giây và phần nhỏ là độ chính xác được thêm vào.
+
+Điều này có thể gây ra toàn bộ các vấn đề tích hợp dữ liệu khi chuyển dịch dữ liệu. Trong trường hợp tốt nhất, không tính chính xác là  mất đi 1 cách có ý nghĩa. TRong các trường hợp nguy hiểm hơn, quá trình tải công việc nhưng tạo ra 1 vùng deltas giữa các timestamp cái mà chỉ có thể phát hiện được bằng cách phân biệt dữ liệu đã tải một cách cẩn thận.
+
+Trong các trường hợp khác, các trình điều khiển khác nhau cho cùng một kho có thể xử lý chúng khác nhau, một trình điều khiển coi chúng là int và trình điều khiển khác là float. Chúng tôi đã gặp sự cố này khi chuyển từ trình điều khiển gốc sang trình điều khiển ODBC cho một nhà kho nổi tiếng. Tất cả điều này để nói rằng: chỉ vì bạn di chuyển các dấu thời gian của mình dưới dạng các kỷ nguyên không có nghĩa là bạn không hiểu gì về độ phức tạp của việc xử lý thời gian
