@@ -2,7 +2,7 @@
 # Trinh điều khiển CSDL: Ngỗ nghịch hay tốt?
 
  Một danh sách các lỗi hàng đầu trinh điều khiển và hành vi sai trái chúng ta đã phát hiện trong những năm gần đây
- Chúng ta đã dành rất nhiều thời gian viết mã cho CSDL, kho dữ liệu và các trình điều khiển của chúng trong năm nay. Giống như, rất nhiều . Thông qua tiến trình đó, chúng ta đã không bao gồm các hành vi không mong đợi. Trong cac trường hợp, những cư xử này chống lại tài liệu của công cụ. TRong các trường hợp khác, chúng chỉ đi ngược lại lẽ thường(dù sao đi nữa   ý thức của chúng ta là phổ biến  trong chừng mực  ). Trong bất kỳ hoàn cảnh nào, chúng tôi đã phát hiện ra nó sẽ thú vị để biên dịch và chia sẻ chúng, cả cho giải trí và cho hậu thế :>
+ Chúng ta đã dành rất nhiều thời gian viết mã cho CSDL, kho dữ liệu và các trình điều khiển của chúng trong năm nay. Giống như, rất nhiều . Thông qua tiến trình đó, chúng ta đã phát hiện  các hành vi không mong đợi. Trong cac trường hợp, những cư xử này chống lại tài liệu của công cụ. TRong các trường hợp khác, chúng chỉ đi ngược lại lẽ thường(dù sao đi nữa   ý thức của chúng ta là phổ biến  trong chừng mực  ). Trong bất kỳ hoàn cảnh nào, chúng tôi đã phát hiện ra nó sẽ thú vị để biên dịch và chia sẻ chúng, cả cho giải trí và cho hậu thế :>
  Trước khi chúng ta đào sâu vào nó, có 1 chú ý. Chúng ta cảm thấy cực kỳ may mắn để làm việc với nhiều công cụ như vậy, và có khả năng để xây dựng trên các công việc của người khác để tiếp tục phân phối các sản phẩm tốt hơn. Chúng ta đã viết các phần mềm cho cuộc sống và chúng ta là người đầu tiên biết lỗi đó đến với lãnh thổ- trừ khi bạn là siêu nhânm hoặc bạn không viết bất kỳ các mã có ý nghĩa nào, các lỗi là không thể tránh khỏi
 
 Mục tiêu của chúng ta ở đây rõ ràng không chế giễu bất kỳ sản phẩm hay công ty cụ thể nào vì sử dug chúng. Thay vào đó, chúng tôi đã phát hiện ra các kiên thức đủ thú vị để chia sẻ. Bất cứ khi nào và ở đâu có thể, chúng tôi làm hết khả năng để trở thành công dân trung thực và báo cáo các lỗi này với chủ sở hữu tương ứng của nó. Bất kể, để ngăn cản bài viết này khỏi việc phục vụ như 1 cơ hội " làm nhục tên tuôi", chúng tôi đã nghĩ nó tốt nhất để ẩn danh CSDL và các trình điều khiển ở đây. Nếu bạn làm việc ở công ty CSDL  và bạn muốn có các phản hồi trên 1 trình điều khiển cụ thể hoặc mở 1 dòng của cuộc giao tiếp, hãy gửi cho chúng tôi 1 ghi chú ở prequel.co!
@@ -33,7 +33,7 @@ Một vài trình điều khiển ghi các chứng chỉ nếu ở đó là 1 l�
 
 Chúng tôi đã phát hiện ra rằng vài trình điều khiển có hết hạn thời gian truy vấn ẩn. Và đó, có lúc, khi các hết hạn thời gian đó xảy ra, các trình điều khiển không sinh ra hoặc trả về bất kỳ 1 loại ngoại lệ hay lỗi nào. Thay vào đó, chúng đơn giản là trả về 1 tệp rỗng.
 
-# Môt vài trình điều khiển không đồng ý với cách các kỷ nguyên nên được địa diện 
+# Môt vài trình điều khiển không đồng ý với cách các kỷ nguyên nên được đại diện 
 
 Nó không là bí mật cái mà mẫu thời gian, múi giờ và các đối tượng hỗn hợp thường gây ra hiểu lầm cho các nhà phát triển [ bằng chứng A](). Cái mà có lẽ ít được biết đến hơn là ngy cả epochs (đai diện giây Unix của timestamp), mặc dù các lời thỉnh cầu của chúng như là đại điện không múi giờ, có thể khó để làm việc với nó. 
 
@@ -41,4 +41,36 @@ Hóa ra, các CSDL thường không đồng sy cái mà chính xác là 1 epoch 
 
 Điều này có thể gây ra toàn bộ các vấn đề tích hợp dữ liệu khi chuyển dịch dữ liệu. Trong trường hợp tốt nhất, không tính chính xác là  mất đi 1 cách có ý nghĩa. TRong các trường hợp nguy hiểm hơn, quá trình tải công việc nhưng tạo ra 1 vùng deltas giữa các timestamp cái mà chỉ có thể phát hiện được bằng cách phân biệt dữ liệu đã tải một cách cẩn thận.
 
-Trong các trường hợp khác, các trình điều khiển khác nhau cho cùng một kho có thể xử lý chúng khác nhau, một trình điều khiển coi chúng là int và trình điều khiển khác là float. Chúng tôi đã gặp sự cố này khi chuyển từ trình điều khiển gốc sang trình điều khiển ODBC cho một nhà kho nổi tiếng. Tất cả điều này để nói rằng: chỉ vì bạn di chuyển các dấu thời gian của mình dưới dạng các kỷ nguyên không có nghĩa là bạn không hiểu gì về độ phức tạp của việc xử lý thời gian
+Trong các trường hợp khác, các trình điều khiển khác cho cùng 1 kho chứa có thể cư xử với chúng khác nhau, một cái cư xử chúng như là số nguyên, cái khác thì coi như số thực. chúng ta va phải điều này khi chuyển đổi từ trình điều khiển bản địa sang 1 trình điều khiển ODBC cho 1 cái được biết đến là nhà kho. Tất cả điều này nói rằng: chỉ bởi vì bạn chuyển các mầu thời gian của bạn như 1`epochs` không có nghĩa là bạn đã không hieieerur gì khi nào nó đến độ phức tạp của xử lý thời gian. 
+
+# Vài nhà cung cấp CSDL không quan tâm về các thay đổi phá vỡ 
+
+ Một kho đữ liệu nổi tiếng được cập nhật các định dạng chuỗi kết nối được mong chờ bởi trình điều khiển của nó, việc dẫn tới 1 lỗi kết nối mơ hồ. Phiên bản tương thích ( Semver) thay đổi đã chỉ ra 1 thay đổi "MINOR", thậm chí điều này trong thực tế không phải là 1 thay đổi tương thích ngược. Thông qua điều này, chúng ta đã học 1: là không phải tất cả các nhà cung cấp cư xử với các trinh điều khiển của họ như một đề nghị sản phẩm lớp đầu  và 2 là để luôn kiểm tra mức độ hỗ trợ 1 1 nhà cung câp cung cấp cho các trình điều khiển trước khi cam kết để hỗ trợ 1 CSDL được cung cấp hay 1 kho dữ liệu. 
+
+# Một vài trinh điều khiển khăng khăng về chuỗi như là 1 sự cố chấp 
+
+Vài trình điều khiển tin rằng các chuỗi phải là UTF-8, số khác tin rằng các chuỗi chỉ là các bytes và sẽ luôn luôn cư xử chúng như là các mảng bytes. Ngoài ra, một vài trình điều khiển có những ngoại lệ kỳ lạ về các ký tự cái mà trình điều khiển của họ có thể hỗ trợ ( hầu hết cái mà không thực sụ dược suất bản)
+
+# Vài kho dữ liệu chỉ thực sự là không nhất quán khi đề cập đến các loại 
+
+
+Chúng ta có rất nhiều để nói về chủ đề cái mà điều này xứng đáng để là 1 bài viết của riêng nó. Nhưng tổng quan, kho dữ liệu khác nhau rất nhiều trong các mức độ khoan dung chúng xử lý các kiểu . Một vài sẽ tải 1 thực thể  của 1 DECIMAL (38,9) một cách happy, bởi vì chúng không tập trung vào kích thước, độ chính xác hay giới hạn quy mô  trên kiểu số của chúng. SỐ khác sẽ phàn nàn nhiều và gọi bạn là 1 thằng ngu cho việc nghĩ  vê những thứ như thế.  
+ Một vài  thậm chí không có hỗ trợ đầy đủ các kiểu với trình điều khiển của chúng. Hầu hết chúng không hỗ trợ tuyệt vời khi có các cột JSON và cư xử nó theo nhiều cách có ỹ nghĩa. 
+
+# Một vài CSDL không tuân theo các quy chuẩn thông thường 
+ Chúng ta gần đay đã phát hiện ra 1 lỗi khi đang cố gắng tải file Parquet được tạo bởi DuckDb trong Databricks.Điều hài hước là các tệp giống nhau có thể được tải tối trong các kho dữ liệu khác, chẳng hạn như Snowflake hay Bigquery. Lỗi cụ thể là :
+```postgresql
+Only one of num_children and type should be set in SchemaElement.
+
+```
+Dựa trên tìm hiều sâu hơn, chúng ta nhận ra điều này là sản phẩm của hai điều:
+
+- Databircks triển khai thông số Parquet theo nghĩa đen nhiều hơn các CSDL khác, ít nhất khi  nói tới siêu dữ liệu. Nó không hoàn toàn ngạc nhiên, cái đã cung cấp rằng Parquet có hỗ trợ sâu  hơn trong hệ sinh thái Spark. 
+- DuckDB cài đặt không chính xác cả trường siêu dữ liệu khi tạo ra 1 tệp Parquet.
+
+Chúng ta đã báo cáo lỗi với dự án DuckDB OSS để họ biết, và họ đã sửa nó chi trong 48 giờ. Chúng ta là những fans to lớn của dự án DuckDB để bắt đầu với nó, nhưng điều này vượt ra bất kỳ những gì chúng ta mong đợi. Kudos cho đội.
+
+Và đó là nó. Chúng tôi đang có kế hoạch dành nhiều thời gian cho CSDL và trình điều khiển vào năm 2023, vì vậy ở đây đang viết nhiều phần mềm hơn , phát hiện các hành vi kỳ lạ hơn và gửi lỗi nhiều hơn và làm việc nhiều hơn với CSDL. 
+
+Nếu có bất kỳ lỗi cụ thể nào cái mà bạn đã phát hiện ra trong công việc của bạn, chúng tôi rất vui để nghe về nó. Hãy thấy thoải mái để cho chúng tôi 1 dòng và chúng ta sẽ ghi lại những điều đó. 
+If there are any specific bugs that you’ve uncovered in your own work, we’d love to hear about them. Feel free to drop us a line and we’ll document those as well!
