@@ -169,19 +169,42 @@ Thay đổi bố cục tích lũy là 1 chỉ số quan trọng được tính t
 MỘt DOM lớn sẽ tăng kích thước bộ nhớ sử dụng, gây ra tính toán kiểu lâu hơn và yêu cầu chi phí tái cấu trúc lại bố cục lớn. 
 
 ## Điều hướng nhiều trang 
- Điều hướng giới thiệu trì hoãn bổ sung trước khi trang có thể được tải. 
+ Điều hướng giới thiệu độ  trì hoãn bổ sung trước khi trang có thể được tải. 
 
-Serving legacy JavaScript to modern browsers
-Polyfills and transforms enable legacy browsers to use new JavaScript features. However, many aren't necessary for modern browsers.
 
-Enormous network payloads
-Large network payloads cost users real money and are highly correlated with long load times.
+## Phục vụ Javascript cũ  cho các trình duyệt web hiện đại 
 
-Defer requests until they're needed.
-Optimize requests to be as small as possible, minimizing and compressing, try to use WebP for the images when it's possible. An image CDN will be always there to keep our performance up!
-Cache requests so the page doesn't re-download the resources on repeat visits.
-Document.write()
-For users on slow connections, external scripts dynamically injected via document.write() can delay page load by tens of seconds.
 
-Non-compositioned animations
-Animations which are not composited can be heavy and increase CLS. Use translate and scale CSS properties instead.
+## Tải trọng mạng lơn 
+Tải trọng mạng lớn yêu cầu người dùng trả tiền thật và có tính tương thích cao với thời gian tải.
+
+- Trì hoãn các yêu cầu cho đến khi chúng thực sự được cần. 
+- Tối ưu hóa các request nhỏ nhất có thể, thu nhỏ và nén, cố gắng sử dụng dịnh dạng Webp  cho hình ảnh khi có thể. Một ảnh CDN sẽ luôn luôn được cho hiệu năng tăng . 
+- Lưu bộ nhớ đệm các yêu cầu vì trang sẽ không tải lại các tài nguyên cho các cuộc thăm lần sau.
+
+## Document.write()
+
+ Cho các người dùng có kết nối chậm, các kịch bản bên ngoài được tiêm vào một cách năng động thông qua hàm document.write() có thể trì hoãn tải trang 10s. 
+## Hoạt ảnh không tổng hợp 
+
+Các hoạt ảnh không được tổng hợp có thể nặng và tawngg CLS. SỬ dụng translate và scale CSS thay thế. 
+
+## Tóm lại 
+Bạn bây giờ đã biết nhiều hơn về cải thiện hiệu suất wbe. Vui lòng nhớ rằng việc cải thiện hiệu năng không phải là 1 vấn về bạn có thể ngồi một chồ  và khắc phục. Nó là 1 tiến trình liên tiếp  và chủ đề hiệu năng nên được giải quyết thường xuyên để những đặc tính mới của web của bạn ( chắc chắn cần ) không phá vỡ hiệu năng của bạn. 
+
+# Top comments 
+
+## Josh Deltener
+•
+26 Apr • Edited on 26 Apr
+ 
+++ sử dụng hình ảnh từ  domain của bạn cho LCP nhanh hơn (Largest Contentfull painting)
+
+Nếu bạn sử dụng các tài nguyên từ các domain  khác ( cloudinary ...) các trình duyệt phải thực thi tìm kiếm DNS, kết nối TCP, ssl...điều này có thể cần tới 200ms. Nếu bạn sử dung các tài sản từ chính domain của bạn ( không phải subdomains). Điều này có thể hoàn toàn được giải quyết vì các tài sản có thể được tải ngay lập tức. Điều này là khái niệm giống như fonts lưu trữ cục bộ. 
+
+Thậm chí nếu bạn sử dụng 1 CDN bên ngoài ( ví dụ :stroryblok), bạn có thể vẫn cần cấu hình các nhà cung cấp hosting ( ví dụ: AWS) để ánh xạ các thư mục từ domain của bạn trong các cuộc ,gọi CDN bên ngoài vì ảnh vẫn truyền qua domain của bạn và được lưu bộ đệm trên CDN domain của bạn -- đây là cái chúng tôi đã làm. 
+
+## Jakub Andrzejewski
+Gợi ý rất tuyệt. Cảm ơn vì điều đó. 
+
+Và  cũng cảm ơn vì đã chia sẻ điều này với bạn đọc của bài viết này. 
