@@ -151,3 +151,120 @@ Nếu bạn không thể truy cập vào GSC, đưa bất kỳ trang nào của 
 - [Lập chỉ mục điện thoại trước: Những điều bạn cần biết](https://ahrefs.com/blog/mobile-first-indexing/)
 
 - [SEO Mobile: 10 tip tối ưu hóa để xây dưng 1 trang thân thiện với mobile](https://ahrefs.com/blog/mobile-seo/)
+
+## 6. Đánh giá điểm Core Web Vitals của bạn 
+
+ Core web Vitals là các chỉ số mà GG sử dụng để đo lường trải nghiệm người dùng. Họ đo thời gian tải trang, khả năng tương tác và độ ổn định của nội dung khi nó tải. 
+
+ Năm 2022, John Mueller đã khẳng định rằng GG chỉ sử dụng Core web Vitual hơn là `old page speed signals`.
+
+![John Mueller's comfirmation](../images/img_3.png)
+
+Anh ấy cũng phát biểu trên Reddit rằng Core Web Vituals là nhân tố xếp hạng của GG.
+![](../images/image14-5.png)
+
+ Đây là những chỉ số lõi bạn nên đánh giá lại:
+
+
+- [Largeset Contentful Paint](https://ahrefs.com/blog/largest-contentful-paint-lcp/) ( LCP )
+- [First Input Delay](https://ahrefs.com/blog/first-input-delay-fid/)( Sẽ được thay thế bởi [Interaction to Next Paint (INP)](https://web.dev/inp/#what-is-a-good-inp-score) vào tháng 3 năm 2024)
+- [Cumulative Layout Shift(CLS)](https://ahrefs.com/blog/cumulative-layout-shift-cls/)
+
+ Khi giám sát các chỉ số này, bạn nên bắt đầu bằng cách sử dụng báo cáo Core Web Vitual của GSC.  Nếu bạn cần nhieu thông tin hơn, kiểm tra báo cáo hiệu năng trong [Ahref's site Audit](https://ahrefs.com/site-audit).
+
+## 7.  Thu hồi quyền của các trang bị hỏng. 
+
+Các trang bị hỏng treenn web của bạn không bao giờ là tốt. Nếu những trang này có backlinks, chúng sẽ lãng phí bởi vì chúng không trỏ tới cái gì.
+
+Bạn cũng có thể tìm các URLs bị hỏng với  backlinks trong [Site Explorer](https://ahrefs.com/site-explorer). CHỉ cần nhập domain của bạn, di tới báo cáo Links tốt nhất, và thêm bộ lọc `404 not found`. Sau đó sắp xếp báo cáo domain đã cung cấp từ thấp tới cao. 
+
+![broken url](../images/broken_url.png)
+
+Đây là tiến trình được đề xuất của chúng tôi khi làm việc với các link hỏng: 
+
+![handle broken link](../images/proces_handle_broken_link.png)
+
+## 8. Đảm bảo sitmap của bạn không có bất kỳ vấn đề gì. 
+
+Một sitemap liệt kê các trang bạn muốn công cụ tìm kiếm lập chỉ mục. Nó không nên liệt kê những thứ như điều hướng, non-canonicals, hoặc các trang chết bời vì chúng gửi các chữ ký pha trộn tới GG. 
+
+Nó quan trọng để đảm bảo rằng các trang quan trọng nhất của bạn muốn index đã được bao gồm trong sitemap của bạn.
+
+Bạn có thể giám sát các vấn dề sitemap của bạn bằng cách tới GSC và bấm vào **sitemaps**
+![sitemap -GSC](../images/sitemap.png)
+
+## 9. Đảm bảo các thành phần trên trang tương tích với những thực hành SEO tốt nhất. 
+
+ Mỗi trang đươc lập chỉ mục trên trang của bạn nên có 1 thẻ title, thẻ meta description và thẻ H1 . Những thành phần cơ bản trên trang này giúp GG hiểu nội dung của bạn và giúp bạn có nhiều nhấp chuột hơn từ thứ hạng của bạn 
+
+Để kiếm tra vấn đề, chuyển đến `Issues` tab trong **báo cáo nội dung** trong [Site Audit](https://ahrefs.com/site-audit).
+![content report](../images/report_content.png)
+
+Ví dụ, trang web có 724 trang thiếu hoặc thẻ title rỗng. Điều này không tốt bởi GG thể hiện chúng trong kết quả tìm kiếm, vì vậy, các trang có thể bỏ lỡ nhiều cơ hội được click. 
+
+Nó cũng có cùng số trang với thẻ meta description trống hooặc thiếu và thiếu hàng nghìn  hoặc trống thẻ H1. 
+
+GG thường thể hiện `meta description` trong kết quả tìm kiếm, vì vậy, bạn nên cố gắng viết một mô tả hấp dẫn cho mọi trang quan trọng. Việc thiếu thẻ H1, ngược lại thường chỉ ra các vấn đề lớn hơn như chủ đề được mã hóa không chính xác. 
+
+Bạn có thể nhìn những URLs  bị ảnh hưởng bằng cách nhấp vào một `vấn đề` và nhấn ` View affected URLs`
+
+![properly_element_struct_for_seo.png](../images/properly_element_struct_for_seo.png)
+
+Nếu bạn muốn ưu tiên các bản sửa lỗi, sắp xếp báo cáo bằng lượng truy cập miễn phí ước lượng từ thấp đến cao. 
+![filter_affected_url_by_organic_traffic](../images/filter_affected_url.png)
+
+## Tìm các nội dung suy giảm để lấy lại thứ hạng.
+    
+Thứ hạng không kéo dài mãi mãi. Vì nội dung đã cũ, các traffic tìm kiếm của ní thường sẽ bắt đầu giảm. Nhưng bạn co thể thường xuyên làm sống lại thứ hạng bằng cách làm mới và tái xuất bản nội dung. 
+
+Ví dụ, [danh sách top tìm kiếm của GG](https://ahrefs.com/blog/top-google-searches/) của chúng tôi sụt giảm liên tục từ năm 2021. 
+![declinting content ](../images/decline_content.png)
+
+ Điuề này là bởi vì chúng tôi đã không cập nhật các bài viết hơn 1 năm, vì vậy nội dung của chúng đã lỗi thời. Một khi chúng tôi tái xuât bản một phần nhỏ, chúng ta đã thấy lưu lượng traffic không phải trả tiền tăng đột biến. 
+Đây là cách dễ để tìm các nội dung suy giảm trên GSC:
+
+- Đi tới báo cáo Search results. 
+- Thiết lập bộ lọc ngày tới chế độ so sánh. 
+- Chọn ` So sánh 6 tháng gần nhất với kỳ trước.`
+- Bấm tab `Pages`
+- Sắp xếp bảng bằng cách `Clicks Difference` từ thấp tới cao
+
+Ví dụ, điều này thể hiện cho chúng ta thấy các bài viết của chúng ta về 100 trang web đáng thăm nhất đã suy giảm liên tục trong 6 tháng gần đây. Vì vậy, nó có thích hợp để update. 
+
+![pradiam_decline_content.png](../images/pradiam_decline_content.png)
+
+
+Nếu bạn là người dùng WordPress, bạn có thể tự đông tiến trình này với công cụ miễn phí SEO. Nó giám sát các trang mà không còn thực thi tốt và cung cấp các gợi ý về cách sửa chúng. 
+
+Ví dụ, nó gợi ý chúng ta viết lại danh sách các công cụ từ khóa tôt nhất của mình bời vì nó đã từng xếp hạng 3 cho các từ khóa đích của nó nhưng bây giờ thâm chí còn không trong danh sách 100. 
+
+For example, it’s suggesting that we rewrite our list of the best keyword tools because it used to rank in the top three for its target keyword but now doesn’t even rank in the top 100.
+![example](../images/example_wordPress_tool.png)
+
+**Đọc thêm**
+- [Tái xuất bản nội dung: cách để cập nhập các bài viết cũ cho SÊO](https://ahrefs.com/blog/republishing-content/)
+- [Cách để làm 1 kiểm toán Content](https://ahrefs.com/blog/content-audit/)
+
+## 11.  Tìm các từ khóa mà đối thủ của bạn đang xếp hạng nhưng bạn không
+   Khoảng cách nội dung có thể xảy ra khi các trang web đối thủ của bạn xếp hạng các từ khóa nhưng bạn không. Xác định những từ khóa này cần thời gian. 
+
+
+Đây là 1 cách dễ dàng để tìm ra khoảng trống nội dung ở 1 mức độ domain bằng công cụ [`Content Gap `](https://ahrefs.com/content-gap) của Ahrefs.
+
+- Dán domain của bạn vào [Site Explore](https://ahrefs.com/site-explorer).
+- Đi tới báo cáo  Content Gap 
+- Dán domain của đối thủ cạnh tranh của bạn. 
+![example](../images/find_keyword_seo.png)
+
+Bấm **SHow keywords**. Bạn sẽ thấy tất cả các keywords mà đối thủ của bạn đang xếp hạng, nhnwg bạn không.
+
+![example](../images/keyword_seo.png)
+### Next steps
+
+ Sử dụng `SEO audit` cho bạn 3 thứ cần làm để cải thiện SEO. 
+
+- Vấn đê kỹ thuật SEO - Sửa những thứ này sẽ đẩy hiệu suất tìm kiếm tổng quan của trang. 
+- Các vấn đê về SEO on-page- Sửa những thứ này có thể tăng lượt bấm không mất phí. 
+- Cơ hội về nội dung - Theo đuổi những điều này có thể tăng xếp hang và có nhiều từ khóa hơn.
+
+Nếu bạn muốn tìm hiểu sâu hơn về audit, đọc [hướng dẫn của chúng tôi để chạy 1 kiểm toán SEO kỹ thuật](https://ahrefs.com/blog/technical-seo-audit/)
