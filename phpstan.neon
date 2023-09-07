@@ -1,0 +1,15 @@
+parameters:
+    level: 9
+    paths:
+        - test
+    reportUnmatchedIgnoredErrors: true
+    checkMissingIterableValueType: false
+
+
+    excludePaths:
+        - tests
+        - vendor
+        - _ide_helper.php
+        - _ide_helper_models.php
+        - .phpstorm.meta.php
+        - node_modules
