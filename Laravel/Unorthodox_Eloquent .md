@@ -487,4 +487,57 @@ public function index(Request $request): AnonymousResourceCollection
 ```
 Bạn có thể vẫn sử dụng tất cả các phương thức của  Illuminate\Database\Eloquent\Builder trong khi cũng có thể có khả năng để gọi các cuộc gọi nang cao, đặc biệt là các phương thức dành riêng cho truy vấn đặc biệt này. 
 
+4. Sharing eager-load
 
+Ví dụ, nếu chúng ta có một mô hình Product với nhiều MediaCollections khác nhau, chẳng hạn như images, videos và documents, thì việc eager load toàn bộ mối quan hệ media sẽ tải về tất cả các hình ảnh, video và tài liệu được đính kèm cho sản phẩm đó. Điều này có thể dẫn đến việc tải về một lượng dữ liệu lớn, đặc biệt là nếu sản phẩm có nhiều MediaCollections.
+Nếu trang chỉ cần mỗi "thumnail", việc tải toàn bộ mối quan hệ "media" là không cần thiết. 
+Để giải quyết vấn đề này sử dụng một điều kiện lọc truy vấn để chỉ eager load các ảnh thumbnail. Điều này sẽ giúp chúng ta tải về ít dữ liệu hơn và cải thiện hiệu suất của ứng dụng.
+
+```php 
+public function index(): View
+{
+    $products = Product::with([
+        'categories',
+        'media' => static function (MorphMany $query) {
+            $query->where('collection_name', 'thumbnail')
+        },
+        'variant.media' => static function (MorphMany $query) {
+            $query->where('collection_name', 'thumbnail')
+        },
+    ])->tap(new Available())->get();
+
+    return $this->view->make('products.index', compact('products'));
+}
+```
+vấn đề overfetching đã được gaiarir quyết nhưng trông khoog đẹp. Trường hợp bạn dùng nó ở nhiều nơi, bạn sẽ phải lặp lại nhieuf lần . 
+vì vậy hẫy tạo ra 1 class đại diện cho các constraint của bạn: 
+```php 
+final readonly class LoadThumbnail implements Arrayable
+{
+    public function __invoke(MorphMany $query): void
+    {
+        $query->where('collection_name', 'thumbnail');
+    }
+
+    public function toArray(): array
+    {
+        return ['media' => $this];
+    }
+}
+```
+
+5. Invokable accessors
+  Khi sử dụng phantom property, lỗ hổng lớn nhất là chúng yêu cầu định nghĩa `set` cast ngay cả khi không cần dùng và cũng k có cơ chế cho tự động ghi nhớ kết quả tính toán.
+Nhưng có thể khắc phục với "Invokable accessors"
+```php 
+final class File extends Model
+{
+    protected function stream(): Attribute
+    {
+        return Attribute::get(new StreamableUrl($this));
+    }
+}
+```
+6. Multiple read models for the same table
+
+7. WithoutRelations for queue performance
