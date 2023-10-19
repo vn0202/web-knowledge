@@ -96,4 +96,55 @@ module.exports = {
 
 có thể sử dụng các công cụ như [Prettỉer](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) của Tailwind. 
 
-4. Giảm thiểu kích thước bản dựng
+4. Giảm thiểu kích thước  bản dựng 
+Nó quan trọng để giữ kích thước file nhỏ nhất có thể. tệp càng lớn thời gian tải càng lâu và hiệu suất giảm.
+
+Tailwind cung cấp nhiều các lớp tiện ích nhưng không phải luc nào chúng ta cũng chỉ dùng trong 1 dự án đơn. Do đó hãy đảm bảo chỉ các class cần thiết đưọc sử dụng xuất hiện trong bản production. 
+Nếu sử dụng Tailwind >= 3.0., Just-in-time (JIT) được bật, bạn không cần lo lắng về điều đo. 
+Nếu phiên bản cũ hơn, bạn cần thực hiện thêm tùy chọn bổ sung bằng cách sử dụng `PurgeCSS`- một công cụ để xóa các class CSS không dùng. 
+Bạn có thể bật JIT thủ công bằng cách: 
+```html 
+module.exports = {
+	mode: 'jit',
+	...
+}
+```
+Một điều quan trọng khác cần nhớ là luôn tối giảm file css trước khi production( xóa các ký tự, khoảng trống không cần thiết) giúp làm giảm kich thước file. 
+Nếu sử dụng Tailwind CLI, có thể thực hiện bằng cách: 
+```html 
+npx tailwindcss -o build.css --minify
+```
+
+5. Ngăn cản sự không nhất quán khi ghi đè và mở rộng
+
+Giả sử bạn có 1 component: 
+```html 
+<Button className="bg-black" />
+```
+và button component 
+```html 
+export const Button = () => {
+  return <button className="bg-white">Test button</button>
+}
+```
+
+trong trường hợp này Button vẫn giữ nguyên 'bg-white', để làm được điều này cần chỉ rõ trong component: 
+```html 
+export const Button = ({ className = "bg-white" }) => {
+  return <button className={className}>Test button</button>
+}
+```
+Điều này không có gì sai, nhưng nó sẽ phiền toái và dài dòng khi bạn phải ghi đè và mở rộng nhiều class. 
+Hơn nữa, điều này khuyến khich sử dụng bất kỳ class nào dẫn đến sự không nhất quán. 
+
+Thay vào đó, hãy định nghĩa trước các biến thể có của component : 
+```html 
+const BUTTON_VARIANTS = {
+  primary: "bg-blue-500 hover:bg-blue-600 text-white",
+  secondary: "bg-gray-500 hover:bg-gray-600 text-white",
+  danger: "bg-red-500 hover:bg-red-600 text-white"
+};
+export const Button = ({ className, variant = BUTTON_VARIANTS.primary }) => {
+return <button className={clsx(className, variant)}>Test Button</button>
+}
+```
