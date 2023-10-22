@@ -148,3 +148,15 @@ export const Button = ({ className, variant = BUTTON_VARIANTS.primary }) => {
 return <button className={clsx(className, variant)}>Test Button</button>
 }
 ```
+
+
+# Conclusion: 
+ 
+Tailwind là một công cụ mạnh mẽ nhưng nó quan trọng là phải tuân theo những quy tắc sau để tránh sự hỗn độn phát sinh trong dự án của bạn.
+
+*Đầu tiên,  bạn nên sử duụng Tailwind khi đã có 1 hệ thống thiết kế và mã thiết kế nhất quán và có các tùy chọn tiêp cận hướng component. Nếu không sử dụng các thàng phần tái sử dụng, không sớm thì muộn, nó sẽ là nỗi đau của bạn. dẫn đến cấu trúc HTML dài dòng, lặp lại.*
+1. Tối thiểu số lượng các lớp tiện ích nhất có thể 
+2. Phổ biến các quy ước với team, ví dụ, nhóm các mã thiết kế và đăt tên có ý nghĩa. 
+3. Tương tự, triển khai các lớp theo thư tự nhất quán để đảm bảo mã sach. 
+4. Toois thiểu kích thước tệp. 
+5. Khi có thể hãy thiết lập các biến thể cho component của bạn. 
